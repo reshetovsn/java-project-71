@@ -16,7 +16,7 @@ public class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file", paramLabel = "filepath2")
     private String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", paramLabel = "format" )
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", paramLabel = "format")
     private String format;
 
     public static void main(String[] args) {
