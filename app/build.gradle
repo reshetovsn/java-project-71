@@ -48,5 +48,5 @@ compileJava {
 }
 
 checkstyle {
-    toolVersion '10.9.3'
+    toolVersion '9.2.1'
 }
