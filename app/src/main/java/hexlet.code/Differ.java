@@ -1,6 +1,8 @@
 package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,14 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Differ {
+    private static ObjectMapper mapper;
     public static String generate(String filepath1, String filepath2) throws Exception {
 
         Path absPath1 = Paths.get(filepath1).toAbsolutePath().normalize();
         Path absPath2 = Paths.get(filepath2).toAbsolutePath().normalize();
         String content1 = Files.readString(absPath1);
         String content2 = Files.readString(absPath2);
-
-        ObjectMapper mapper = new ObjectMapper();
+        if (filepath1.contains(".json")) {
+            mapper = new ObjectMapper();
+        } else if (filepath1.contains(".yaml") || filepath1.contains(".yml")) {
+            mapper = new ObjectMapper(new YAMLFactory());
+        }
         Map<String, Object> mapA = new HashMap<>();
         try {
             mapA = mapper.readValue(content1, Map.class);
