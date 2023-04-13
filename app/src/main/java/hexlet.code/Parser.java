@@ -1,12 +1,11 @@
 package hexlet.code;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Parser {
-    public static String parsingRes(Map<String, Objects> mapA, Map<String, Objects> mapB) {
+    public static String parsingRes(Map<String, Object> mapA, Map<String, Object> mapB) {
         Set<String> keys = new TreeSet<>();
         keys.addAll(mapA.keySet());
         keys.addAll(mapB.keySet());
