@@ -25,4 +25,23 @@ class DifferTest {
                 }""";
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void testYAML() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
+        String actual = Differ.generate(filepath1, filepath2);
+//        Path result = Paths.get("src/test/resources/result_json.txt").toAbsolutePath().normalize();
+//        String expected = Files.readString(result);
+        String expected = """
+                {
+                - follow: false
+                  host: hexlet.io
+                - proxy: 123.234.53.22
+                - timeout: 50
+                + timeout: 20
+                + verbose: true
+                }""";
+        assertThat(actual).isEqualTo(expected);
+    }
 }
