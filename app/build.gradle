@@ -40,7 +40,7 @@ jacocoTestReport {
 }
 
 application {
-    mainClassName = 'hexlet.code.App'
+    mainClass.set("hexlet.code.App")
 }
 
 compileJava {
