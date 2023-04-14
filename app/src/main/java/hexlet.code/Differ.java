@@ -2,7 +2,7 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-
+import hexlet.code.Formats.Stylish;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Differ {
     private static ObjectMapper mapper;
-    public static String generate(String filepath1, String filepath2) throws Exception {
+    public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
         Path absPath1 = Paths.get(filepath1).toAbsolutePath().normalize();
         Path absPath2 = Paths.get(filepath2).toAbsolutePath().normalize();
@@ -34,6 +34,9 @@ public class Differ {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return Parser.parsingRes(mapA, mapB);
+        return switch (format) {
+            case "stylish" -> Stylish.makeStylish(mapA, mapB);
+            default -> throw new Exception("Wrong format: " + format);
+        };
     }
 }
