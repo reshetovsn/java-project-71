@@ -10,4 +10,6 @@ Yaml
 https://cloud.mail.ru/public/gwGz/yJZA666gb  
 Stylish format as default  
 https://cloud.mail.ru/public/jTjc/bzkxAvzD3  
+Plain format  
+https://cloud.mail.ru/public/YABs/Su9jT1F9v  
 
