@@ -12,7 +12,8 @@ class DifferTest {
     void testJsonStylish() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
-        String actual = Differ.generate(filepath1, filepath2, "stylish");
+        String format = "stylish";
+        String actual = Differ.generate(filepath1, filepath2, format);
         String expected = """
                 {
                   chars1: [a, b, c]
@@ -46,7 +47,8 @@ class DifferTest {
     void testYamlStylish() throws Exception {
         String filepath1 = "src/test/resources/file1.yaml";
         String filepath2 = "src/test/resources/file2.yaml";
-        String actual = Differ.generate(filepath1, filepath2, "stylish");
+        String format = "stylish";
+        String actual = Differ.generate(filepath1, filepath2, format);
         String expected = """
                 {
                   chars1: [a, b, c]
@@ -79,7 +81,8 @@ class DifferTest {
     void testPlainFormat() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
-        String actual = Differ.generate(filepath1, filepath2, "plain");
+        String format = "plain";
+        String actual = Differ.generate(filepath1, filepath2, format);
         String expected = """
                 Property 'chars2' was updated. From [complex value] to false
                 Property 'checked' was updated. From false to true
@@ -102,8 +105,8 @@ class DifferTest {
     void testJsonFormat() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
-
-        String actual = Differ.generate(filepath1, filepath2, "json");
+        String format = "json";
+        String actual = Differ.generate(filepath1, filepath2, format);
         Path result = Paths.get("src/test/resources/result_json.json").toAbsolutePath().normalize();
         String expected = Files.readString(result);
         assertThat(actual).isEqualTo(expected);
