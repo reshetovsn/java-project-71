@@ -48,8 +48,6 @@ class DifferTest {
         String filepath1 = "src/test/resources/file1.yaml";
         String filepath2 = "src/test/resources/file2.yaml";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
-//        Path result = Paths.get("src/test/resources/result_json.txt").toAbsolutePath().normalize();
-//        String expected = Files.readString(result);
         String expected = """
                 {
                   chars1: [a, b, c]
@@ -76,6 +74,28 @@ class DifferTest {
                 - setting3: true
                 + setting3: none
                 }""";
+        assertThat(actual).isEqualTo(expected);
+    }
+    @Test
+    void testPLAIN() throws Exception {
+        String filepath1 = "src/test/resources/file1.json";
+        String filepath2 = "src/test/resources/file2.json";
+        String actual = Differ.generate(filepath1, filepath2, "plain");
+        String expected = """
+                Property 'chars2' was updated. From [complex value] to false
+                Property 'checked' was updated. From false to true
+                Property 'default' was updated. From null to [complex value]
+                Property 'id' was updated. From 45 to null
+                Property 'key1' was removed
+                Property 'key2' was added with value: 'value2'
+                Property 'numbers2' was updated. From [complex value] to [complex value]
+                Property 'numbers3' was removed
+                Property 'numbers4' was added with value: [complex value]
+                Property 'obj1' was added with value: [complex value]
+                Property 'setting1' was updated. From 'Some value' to 'Another value'
+                Property 'setting2' was updated. From 200 to 300
+                Property 'setting3' was updated. From true to 'none'
+                """;
         assertThat(actual).isEqualTo(expected);
     }
 }
