@@ -1,11 +1,6 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import hexlet.code.Formatters.Stylish;
 import org.junit.jupiter.api.Test;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,8 +13,6 @@ class DifferTest {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
-//        Path result = Paths.get("src/test/resources/result_json.json").toAbsolutePath().normalize();
-//        String expected = Files.readString(result);
         String expected = """
                 {
                   chars1: [a, b, c]
