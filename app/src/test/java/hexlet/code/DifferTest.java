@@ -1,18 +1,24 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Formatters.Stylish;
 import org.junit.jupiter.api.Test;
 //import java.nio.file.Files;
 //import java.nio.file.Path;
 //import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DifferTest {
     @Test
-    void testJSON() throws Exception {
+    void testJsonStylish() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
-//        Path result = Paths.get("src/test/resources/result_json.txt").toAbsolutePath().normalize();
+//        Path result = Paths.get("src/test/resources/result_json.json").toAbsolutePath().normalize();
 //        String expected = Files.readString(result);
         String expected = """
                 {
@@ -44,7 +50,7 @@ class DifferTest {
     }
 
     @Test
-    void testYAML() throws Exception {
+    void testYamlStylish() throws Exception {
         String filepath1 = "src/test/resources/file1.yaml";
         String filepath2 = "src/test/resources/file2.yaml";
         String actual = Differ.generate(filepath1, filepath2, "stylish");
@@ -77,7 +83,7 @@ class DifferTest {
         assertThat(actual).isEqualTo(expected);
     }
     @Test
-    void testPLAIN() throws Exception {
+    void testPlainFormat() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String actual = Differ.generate(filepath1, filepath2, "plain");
@@ -96,6 +102,17 @@ class DifferTest {
                 Property 'setting2' was updated. From 200 to 300
                 Property 'setting3' was updated. From true to 'none'
                 """;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonFormat() throws Exception {
+        String filepath1 = "src/test/resources/file1.json";
+        String filepath2 = "src/test/resources/file2.json";
+
+        String actual = Differ.generate(filepath1, filepath2, "json");
+        Path result = Paths.get("src/test/resources/result_json.json").toAbsolutePath().normalize();
+        String expected = Files.readString(result);
         assertThat(actual).isEqualTo(expected);
     }
 }
