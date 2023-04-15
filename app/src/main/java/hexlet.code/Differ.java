@@ -2,7 +2,6 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import hexlet.code.Formats.Stylish;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,9 +33,6 @@ public class Differ {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return switch (format) {
-            case "stylish" -> Stylish.makeStylish(mapA, mapB);
-            default -> throw new Exception("Wrong format: " + format);
-        };
+        return Formatter.chooseFormat(mapA, mapB, format);
     }
 }
