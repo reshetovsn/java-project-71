@@ -3,7 +3,7 @@
 [![Differ-check](https://github.com/reshetovsn/java-project-71/actions/workflows/main.yml/badge.svg)](https://github.com/reshetovsn/java-project-71/actions/workflows/main.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/012d35952345cdf7d1f4/maintainability)](https://codeclimate.com/github/reshetovsn/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/012d35952345cdf7d1f4/test_coverage)](https://codeclimate.com/github/reshetovsn/java-project-71/test_coverage)
-## Описание
+### Описание
 Консольная утилита, определяющая разницу между двумя структурами данных.
 ### Возможности утилиты:
 * Поддержка разных входных форматов: yaml/yml и json  
