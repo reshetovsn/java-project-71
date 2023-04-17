@@ -147,3 +147,4 @@ class DifferTest {
         assertThat(actual).isEqualTo(expected);
     }
 }
+
