@@ -35,4 +35,9 @@ public class Differ {
         }
         return Formatter.chooseFormat(mapA, mapB, format);
     }
+
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        String format = "stylish";
+        return generate(filepath1, filepath2, format);
+    }
 }
