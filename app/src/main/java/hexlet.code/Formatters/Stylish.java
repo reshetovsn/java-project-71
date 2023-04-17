@@ -17,14 +17,14 @@ public class Stylish {
             var valueA = mapA.get(elements);
             var valueB = mapB.get(elements);
             if (mapA.containsKey(elements) && !mapB.containsKey(elements)) {
-                result.append(" ".repeat(2))
+                result.append("  ")
                         .append("- ")
                         .append(elements)
                         .append(": ")
                         .append(valueA)
                         .append("\n");
             } else if (!mapA.containsKey(elements) && mapB.containsKey(elements)) {
-                result.append(" ".repeat(2))
+                result.append("  ")
                         .append("+ ")
                         .append(elements)
                         .append(": ")
@@ -32,19 +32,19 @@ public class Stylish {
                         .append("\n");
             } else if (mapA.containsKey(elements) && mapB.containsKey(elements)) {
                 if (Objects.equals(valueA, valueB)) {
-                    result.append(" ".repeat(4))
+                    result.append("    ")
                             .append(elements)
                             .append(": ")
                             .append(valueA)
                             .append("\n");
                 } else {
-                    result.append(" ".repeat(2))
+                    result.append("  ")
                             .append("- ")
                             .append(elements)
                             .append(": ")
                             .append(valueA)
                             .append("\n");
-                    result.append(" ".repeat(2))
+                    result.append("  ")
                             .append("+ ")
                             .append(elements)
                             .append(": ")
