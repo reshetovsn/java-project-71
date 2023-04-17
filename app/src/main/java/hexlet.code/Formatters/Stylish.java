@@ -1,59 +1,44 @@
 package hexlet.code.Formatters;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Stylish {
-    public static String makeStylish(Map<String, Object> mapA, Map<String, Object> mapB) {
-        Set<String> keys = new TreeSet<>();
-        keys.addAll(mapA.keySet());
-        keys.addAll(mapB.keySet());
+    public static String makeStylish(List<Map<String, Object>> diffMap) {
 
         StringBuilder result = new StringBuilder();
-        result.append("{\n");
-        for (String elements : keys) {
-            var valueA = mapA.get(elements);
-            var valueB = mapB.get(elements);
-            if (mapA.containsKey(elements) && !mapB.containsKey(elements)) {
-                result.append("  ")
-                        .append("- ")
-                        .append(elements)
+        result.append("{");
+        for (Map<String, Object> element : diffMap) {
+            result.append("\n").append("  ");
+            if (element.get("status").equals("deleted")) {
+                result.append("- ")
+                        .append(element.get("key"))
                         .append(": ")
-                        .append(valueA)
+                        .append(element.get("oldValue"));
+            } else if (element.get("status").equals("added")) {
+                result.append("+ ")
+                        .append(element.get("key"))
+                        .append(": ")
+                        .append(element.get("newValue"));
+            } else if (element.get("status").equals("unchanged")) {
+                result.append("  ")
+                        .append(element.get("key"))
+                        .append(": ")
+                        .append(element.get("oldValue"));
+            } else if (element.get("status").equals("changed")) {
+                result.append("- ")
+                        .append(element.get("key"))
+                        .append(": ")
+                        .append(element.get("oldValue"))
                         .append("\n");
-            } else if (!mapA.containsKey(elements) && mapB.containsKey(elements)) {
                 result.append("  ")
                         .append("+ ")
-                        .append(elements)
+                        .append(element.get("key"))
                         .append(": ")
-                        .append(valueB)
-                        .append("\n");
-            } else if (mapA.containsKey(elements) && mapB.containsKey(elements)) {
-                if (Objects.equals(valueA, valueB)) {
-                    result.append("    ")
-                            .append(elements)
-                            .append(": ")
-                            .append(valueA)
-                            .append("\n");
-                } else {
-                    result.append("  ")
-                            .append("- ")
-                            .append(elements)
-                            .append(": ")
-                            .append(valueA)
-                            .append("\n");
-                    result.append("  ")
-                            .append("+ ")
-                            .append(elements)
-                            .append(": ")
-                            .append(valueB)
-                            .append("\n");
-                }
+                        .append(element.get("newValue"));
             }
         }
-        result.append("}");
+        result.append("\n}");
         return result.toString().trim();
     }
 }
