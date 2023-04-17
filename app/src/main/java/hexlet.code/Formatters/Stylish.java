@@ -17,19 +17,43 @@ public class Stylish {
             var valueA = mapA.get(elements);
             var valueB = mapB.get(elements);
             if (mapA.containsKey(elements) && !mapB.containsKey(elements)) {
-                result.append("- ").append(elements).append(": ").append(valueA).append("\n");
+                result.append(" ".repeat(2))
+                        .append("- ")
+                        .append(elements)
+                        .append(": ")
+                        .append(valueA)
+                        .append("\n");
             } else if (!mapA.containsKey(elements) && mapB.containsKey(elements)) {
-                result.append("+ ").append(elements).append(": ").append(valueB).append("\n");
+                result.append(" ".repeat(2))
+                        .append("+ ")
+                        .append(elements)
+                        .append(": ")
+                        .append(valueB)
+                        .append("\n");
             } else if (mapA.containsKey(elements) && mapB.containsKey(elements)) {
                 if (Objects.equals(valueA, valueB)) {
-                    result.append("  ").append(elements).append(": ").append(valueA).append("\n");
+                    result.append(" ".repeat(4))
+                            .append(elements)
+                            .append(": ")
+                            .append(valueA)
+                            .append("\n");
                 } else {
-                    result.append("- ").append(elements).append(": ").append(valueA).append("\n");
-                    result.append("+ ").append(elements).append(": ").append(valueB).append("\n");
+                    result.append(" ".repeat(2))
+                            .append("- ")
+                            .append(elements)
+                            .append(": ")
+                            .append(valueA)
+                            .append("\n");
+                    result.append(" ".repeat(2))
+                            .append("+ ")
+                            .append(elements)
+                            .append(": ")
+                            .append(valueB)
+                            .append("\n");
                 }
             }
         }
         result.append("}");
-        return result.toString();
+        return result.toString().trim();
     }
 }
