@@ -1,4 +1,4 @@
-package hexlet;
+package hexlet.code;
 
 import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeAll;
