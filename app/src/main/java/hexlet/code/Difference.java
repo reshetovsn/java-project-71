@@ -29,17 +29,15 @@ public class Difference {
                 diffMap.put("key", key);
                 diffMap.put("status", "added");
                 diffMap.put("newValue", valueB);
-            } else if (mapA.containsKey(key) && mapB.containsKey(key)) {
-                if (Objects.equals(valueA, valueB)) {
-                    diffMap.put("key", key);
-                    diffMap.put("status", "unchanged");
-                    diffMap.put("oldValue", valueA);
-                } else {
-                    diffMap.put("key", key);
-                    diffMap.put("status", "changed");
-                    diffMap.put("oldValue", valueA);
-                    diffMap.put("newValue", valueB);
-                }
+            } else if (mapA.containsKey(key) && mapB.containsKey(key) && Objects.equals(valueA, valueB)) {
+                diffMap.put("key", key);
+                diffMap.put("status", "unchanged");
+                diffMap.put("oldValue", valueA);
+            } else if (mapA.containsKey(key) && mapB.containsKey(key) && !Objects.equals(valueA, valueB)) {
+                diffMap.put("key", key);
+                diffMap.put("status", "changed");
+                diffMap.put("oldValue", valueA);
+                diffMap.put("newValue", valueB);
             }
             list.add(diffMap);
         }
