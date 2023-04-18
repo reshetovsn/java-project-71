@@ -1,5 +1,6 @@
-package hexlet.code;
+package hexlet;
 
+import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
