@@ -21,10 +21,10 @@ jobs:
           arguments: build
           build-root-directory: app
 
-      - run: chmod +x app/gradlew
-      - run: make -C app build
-      - run: make -C app test
-      - run: make -C app lint
+     # - run: chmod +x app/gradlew
+     # - run: make -C app build
+     # - run: make -C app test
+     # - run: make -C app lint
 
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
@@ -34,4 +34,3 @@ jobs:
         with:
           coverageCommand: make -C app report
           coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
-          debug: true
