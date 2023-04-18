@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DifferTest {
@@ -41,16 +40,7 @@ class DifferTest {
     }
 
     @Test
-    void testYamlStylish() throws Exception {
-        String filepath1 = "src/test/resources/file1.yaml";
-        String filepath2 = "src/test/resources/file2.yaml";
-        String format = "stylish";
-        String actual = Differ.generate(filepath1, filepath2, format);
-        String expected = resultStylish;
-        assertThat(actual).isEqualTo(expected);
-    }
-    @Test
-    void testPlainFormat() throws Exception {
+    void testJsonPlain() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String format = "plain";
@@ -60,7 +50,7 @@ class DifferTest {
     }
 
     @Test
-    void testJsonFormat() throws Exception {
+    void testJsonJson() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
         String format = "json";
@@ -70,9 +60,48 @@ class DifferTest {
     }
 
     @Test
-    void stylishAsDefault() throws Exception {
+    void testJsonDefault() throws Exception {
         String filepath1 = "src/test/resources/file1.json";
         String filepath2 = "src/test/resources/file2.json";
+        String actual = Differ.generate(filepath1, filepath2);
+        String expected = resultStylish;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testYamlStylish() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
+        String format = "stylish";
+        String actual = Differ.generate(filepath1, filepath2, format);
+        String expected = resultStylish;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testYamlFormat() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
+        String format = "plain";
+        String actual = Differ.generate(filepath1, filepath2, format);
+        String expected = resultPlain;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testYamlJson() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
+        String format = "json";
+        String actual = Differ.generate(filepath1, filepath2, format);
+        String expected = resultJson;
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testYamlDefault() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
         String actual = Differ.generate(filepath1, filepath2);
         String expected = resultStylish;
         assertThat(actual).isEqualTo(expected);
