@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Plain {
-    public static String makePlain(List<Map<String, Object>> diffMap) {
+    public static String makePlain(List<Map<String, Object>> difference) {
 
         StringBuilder result = new StringBuilder();
-        for (Map<String, Object> element : diffMap) {
+        for (Map<String, Object> element : difference) {
             if (element.get("status").equals("deleted")) {
                 result.append("Property '")
                         .append(element.get("key"))

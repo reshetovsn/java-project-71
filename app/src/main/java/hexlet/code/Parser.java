@@ -2,17 +2,11 @@ package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> makeParsing(String filepath) throws Exception {
-        Path absPath = Paths.get(filepath).toAbsolutePath().normalize();
-        String content = Files.readString(absPath);
-
+    public static Map<String, Object> makeParsing(String filepath, String content) throws Exception {
         Map<String, Object> map = new HashMap<>();
         ObjectMapper mapper;
         if (filepath.contains(".json")) {

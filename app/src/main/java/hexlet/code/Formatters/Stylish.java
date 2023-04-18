@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String makeStylish(List<Map<String, Object>> diffMap) {
+    public static String makeStylish(List<Map<String, Object>> difference) {
 
         StringBuilder result = new StringBuilder();
         result.append("{");
-        for (Map<String, Object> element : diffMap) {
+        for (Map<String, Object> element : difference) {
             result.append("\n").append("  ");
             if (element.get("status").equals("deleted")) {
                 result.append("- ")

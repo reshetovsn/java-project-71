@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Json {
-    public static String makeJson(List<Map<String, Object>> diffMap) throws Exception {
+    public static String makeJson(List<Map<String, Object>> difference) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        String result = "";
-        result = mapper.writeValueAsString(Stylish.makeStylish(diffMap));
+        String result = mapper.writeValueAsString(Stylish.makeStylish(difference));
         return result.trim();
     }
 }
