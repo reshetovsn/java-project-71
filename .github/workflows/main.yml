@@ -21,7 +21,7 @@ jobs:
           arguments: build
           build-root-directory: app
       - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v2.7.1
         env:
           CC_TEST_REPORTER_ID: 37b1bd24b97f70677cb2eba3097558b15f409f106ed1eb682c219e11baecf94e
           JACOCO_SOURCE_PATH: app/src/main/java
