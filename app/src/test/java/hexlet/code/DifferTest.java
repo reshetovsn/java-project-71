@@ -40,7 +40,7 @@ class DifferTest {
         // Json and Yaml to stylish as default
         assertThat(Differ.generate(filePath1, filePath2))
                 .isEqualTo(resultStylish);
-        // Json and Yaml to Stylish
+        // Json and Yaml to stylish
         assertThat(Differ.generate(filePath1, filePath2, "stylish"))
                 .isEqualTo(resultStylish);
         // Json and Yaml to plain
